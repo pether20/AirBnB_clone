@@ -12,7 +12,7 @@
 
 
 <h1 align ="center">
-<img src="https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOU5BHMTQX4%2F20220301%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220301T204318Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=3a8db5546ceaf0f93f8abe7001041e59fc7e1235454cf24644a19b421dc3daf5" height="50%" width="40%">
+<img src="https://i.ibb.co/X3nmjNb/clone-airbnb.png" height="50%" width="40%">
 </h1>
 
 ## 😊 Background Context
