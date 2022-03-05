@@ -40,3 +40,7 @@ class TestDocs(unittest.TestCase):
                          "base_model.py needs a doctring")
         self.assertTrue(len(mod_doc) > 1,
                         "base_model.py needs a docstring")
+
+
+if __name__ == '__main__':
+    unittest.main
