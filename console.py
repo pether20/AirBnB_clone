@@ -71,10 +71,13 @@ class HBNBCommand(cmd.Cmd):
         if len(line_tokens) == 0 or line_tokens[0] == "BaseModel":
             new_obj = ",".join(models.storage.all())
             new_obj = new_obj.split(sep=",")
+            count = 0
             print('["', end="")
             for k in new_obj:
+                if count == 1:
+                    print(", ", end="")
                 print(f"{models.storage.all()[k]}", end="")
-                print(", ", end="")
+                count = 1
             print('"]')
         elif line_tokens[0] != "BaseModel":
             print("** class doesn't exist **")
