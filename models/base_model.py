@@ -5,7 +5,7 @@
 from unicodedata import name
 import uuid
 from datetime import datetime
-#importo models puedo acceder a todo lo que este dentro del __init__.py
+# acceder a todo lo que este dentro del __init__.py
 import models
 # format date
 fd = "%Y-%m-%dT%H:%M:%S.%f"
