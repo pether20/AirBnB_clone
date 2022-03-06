@@ -10,12 +10,39 @@ fd = "%Y-%m-%dT%H:%M:%S.%f"
 
 
 class BaseModel:
-    """
-    Class BaseModel
+    """ Class BaseModel
+
+        ...
+
+        Attributes
+        ----------
+        id : str
+            Unique identication of the instance
+        created_at : datetime
+            Object creation date and time
+        updated_at : datetime
+            Object modification date and time
+        Methods
+        -------
+        save():
+            Stores the modifcation date and time of the object
+        to_dict():
+            Returns a dictionary containing all key/values of the instance
+        __str__():
+            Returns information(type, id, __dict__) of the instance
     """
 
     def __init__(self, *args, **kwargs):
-        """Methode init_self"""
+        """ Constructor method to initialize attribute of an instance.
+            If argument kwargs is not empty, the key/values are added to
+            the instance. Otherwise, create new instance.
+            Parameters
+            ----------
+            args : list, optional
+                pass
+            kwargs: dict, optional
+                Contains key/values to add to the instance
+        """
         if kwargs:
             for key, val in kwargs.items():
                 if key != '__class__':
