@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Class HBNBCCommand
+"""
 import cmd
 import models
 from models import storage
@@ -10,13 +13,12 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def do_EOF(self, args):
-        """Salir del interprete"""
+        """Salir del interprete exit the program"""
         print("")
         return True
 
     def do_quit(self, args):
-        """Salir del interprete"""
-        print("Hasta pronto")
+        """Salir del interprete exit the program"""
         return(True)
 
     def do_create(self, line):
