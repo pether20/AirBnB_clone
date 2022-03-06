@@ -1,21 +1,21 @@
 #!/usr/bin/python3
-""" define basemodel"""
-
-
-from unicodedata import name
+"""
+Class BaseModel for Airbnb
+"""
 import uuid
 from datetime import datetime
-# acceder a todo lo que este dentro del __init__.py
 import models
 # format date
 fd = "%Y-%m-%dT%H:%M:%S.%f"
 
 
 class BaseModel:
-    """ class BaseModel """
+    """
+    Class BaseModel
+    """
 
     def __init__(self, *args, **kwargs):
-        """Methode init(self)  """
+        """Methode init_self"""
         if kwargs:
             for key, val in kwargs.items():
                 if key != '__class__':
@@ -24,11 +24,11 @@ class BaseModel:
                 self.created_at = datetime.strptime(kwargs["created_at"], fd)
             if type(self.updated_at) is str:
                 self.updated_at = datetime.strptime(kwargs["updated_at"], fd)
+
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-
             models.storage.new(self)
 
     def save(self):
@@ -46,5 +46,5 @@ class BaseModel:
 
     def __str__(self):
         """ Methode str """
-        name = BaseModel.__name__
-        return ("[{}] ({}) {}".format(name, self.id, self.__dict__))
+        name_class = self.__class__.__name__
+        return f"[{name_class}] ({self.id}) {self.__dict__}"
