@@ -13,6 +13,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """Interprete de comandos"""
     prompt = "(hbnb) "
@@ -54,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         try:
-            nueva_inst = BaseModel()
+            nueva_inst = HBNBCommand.class_dict[line]()
             nueva_inst.save()
             print(nueva_inst.id)
         except Exception as fail:
@@ -66,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
         if len(line_tokens) == 0 or line is None:
             print("** class name missing **")
             return
-        elif line_tokens[0] != "BaseModel":
+        elif line_tokens[0] not in (HBNBCommand.class_dict.keys()):
             print("** class doesn't exist **")
         elif len(line_tokens) == 1:
             print("** instance id missing **")
@@ -82,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
         line_tokens = line.split()
         if len(line_tokens[0]) == 0 or line is None:
             print("** class name missing **")
-        elif line_tokens[0] != "BaseModel":
+        elif line_tokens[0] not in (HBNBCommand.class_dict.keys()):
             print("** class doesn't exist **")
         elif len(line_tokens[1]) == 0:
             print("** instance id missing **")
