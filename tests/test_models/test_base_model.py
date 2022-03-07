@@ -74,8 +74,6 @@ class test_basemodel(unittest.TestCase):
         with self.assertRaises(TypeError):
             new = self.value(**n)
 
-    
-
     def test_id(self):
         """ """
         new = self.value()
