@@ -81,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, line):
         """ delete an object"""
         line_tokens = line.split()
-        if len(line_tokens[0]) == 0 or line is None:
+        if len(line_tokens) == 0:
             print("** class name missing **")
         elif line_tokens[0] not in (HBNBCommand.class_dict.keys()):
             print("** class doesn't exist **")
@@ -114,8 +114,28 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, line):
         """ adding or updating attributes """
         line_tokens = line.split()
-        if len(line_tokens[0]) == 0:
+        if len(line_tokens) == 0:
             print("** class name missing **")
+        elif line_tokens[0] not in HBNBCommand.class_dict.keys():
+            print("** class doesn't exist **")
+        elif len(line_tokens) == 1:
+            print("** instance id missing **")
+        elif (line_tokens[0] + "." + line_tokens[1]) not in (storage.all().keys()):
+            print("** no instance found **")
+        elif len(line_tokens) == 2:
+            print("** attribute name missing **")
+        elif len(line_tokens) == 3:
+            print("** value missing **")
+        else:
+            all_objs = storage.all()
+            cr_obj = all_objs[line_tokens[0] + "." + line_tokens[1]]
+            setattr(
+                cr_obj,
+                line_tokens[2],
+                line_tokens[3]
+            )
+            cr_obj.save()
+
 
 
 if __name__ == '__main__':
