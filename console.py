@@ -120,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(line_tokens) == 1:
             print("** instance id missing **")
-        elif (line_tokens[0] + "." + line_tokens[1]) not in list(storage.all().keys()):
+        elif (line_tokens[0] + "." + line_tokens[1]) not in (storage.all().keys()):
             print("** no instance found **")
         elif len(line_tokens) == 2:
             print("** attribute name missing **")
@@ -132,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
             setattr(
                 cr_obj,
                 line_tokens[2],
-                line_tokens[3].strip("\"")
+                line_tokens[3]
             )
             cr_obj.save()
 
