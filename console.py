@@ -81,20 +81,19 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         """ print the instan str"""
+        class_prin = []
         line_tokens = line.split()
-        if len(line_tokens) == 0 or line_tokens[0] == "BaseModel":
-            new_obj = ",".join(models.storage.all())
-            new_obj = new_obj.split(sep=",")
-            count = 0
-            print('["', end="")
-            for k in new_obj:
-                if count == 1:
-                    print(", ", end="")
-                print(f"{models.storage.all()[k]}", end="")
-                count = 1
-            print('"]')
-        elif line_tokens[0] != "BaseModel":
+        if len(line_tokens) == 0:
+            for obj in storage.all().values():
+                class_prin.append(str(obj))
+            print(class_prin)
+        elif line_tokens[0] not in(HBNBCommand.class_dict.keys()):
             print("** class doesn't exist **")
+        else:
+            for obj in storage.all().values():
+                if line_tokens[0] == obj.__class__.__name__:
+                    class_prin.append(str(obj))
+            print(class_prin)
 
     def do_update(self, line):
         """ adding or updating attributes """
