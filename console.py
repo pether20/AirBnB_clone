@@ -49,6 +49,19 @@ class HBNBCommand(cmd.Cmd):
         """ Overrides the emptyline method of CMD """
         pass
 
+    def do_count(self, line_args_obj):
+        args = line_args_obj.split()
+        if args[0] not in classes:
+            return
+        else:
+            count = 0
+            keys = models.storage.all().keys()
+            for key in keys:
+                lenght = len(args[0])
+                if key[:lenght] == args[0]:
+                    count += 1
+            print(count)
+
     def do_create(self, line):
         """Create a object"""
         if len(line) == 0:
