@@ -6,11 +6,26 @@ import cmd
 import models
 from models import storage
 from models.base_model import BaseModel
-
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """Interprete de comandos"""
     prompt = "(hbnb) "
+
+    class_dict = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review
+    }
 
     def do_EOF(self, args):
         """Salir del interprete exit the program"""
@@ -87,7 +102,7 @@ class HBNBCommand(cmd.Cmd):
             for obj in storage.all().values():
                 class_prin.append(str(obj))
             print(class_prin)
-        elif line_tokens[0] not in(HBNBCommand.class_dict.keys()):
+        elif line_tokens[0] not in (HBNBCommand.class_dict.keys()):
             print("** class doesn't exist **")
         else:
             for obj in storage.all().values():
