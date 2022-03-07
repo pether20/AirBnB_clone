@@ -17,9 +17,21 @@ class HBNBCommand(cmd.Cmd):
         print("")
         return True
 
+    def help_EOF(self):
+        """ Prints the help documentation for EOF """
+        print("Exits the program without formatting\n")
+
     def do_quit(self, args):
         """Salir del interprete exit the program"""
         return(True)
+
+    def help_quit(self):
+        """ Prints the help documentation for quit  """
+        print("Exits the program with formatting\n")
+
+    def emptyline(self):
+        """ Overrides the emptyline method of CMD """
+        pass
 
     def do_create(self, line):
         """Create a object"""
