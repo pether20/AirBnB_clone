@@ -15,7 +15,8 @@ class FileStorage:
     """Serializes instances toa JSON  fiel and deserialize file to instances"""
     # __file_path: string - path to the JSON file (ex: file.json)
     __file_path = "file.json"
-    # __objects: dictionary - empty but will store all objects by <class name>.id
+    # __objects: dictionary - empty but will
+    # store all objects by <class name>.id
     __objects = {}
 
     def all(self):
@@ -32,13 +33,6 @@ class FileStorage:
             json_obj[key] = val.to_dict()
         with open(self.__file_path, 'w', encoding='UTF-8') as file:
             file.write(json.dumps(json_obj))
-
-        """
-    for k in self.__objects.keys():
-      json_obj[k] = self.__objects[k].to_dict()
-    
-      json.dumps(json_obj, file)  
-    """
 
     def reload(self):
         class_dict = {
